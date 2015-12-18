@@ -36,7 +36,7 @@ the installed application. You only need to do these once for all.
    php /path/to/my-api/init --env=production --overwrite=a
    ```
 
-2. Create a new database and adjust the configuration in `common/config/db-local.php` accordingly.
+2. Create a new database and adjust the configuration in `config/db-local.php` accordingly.
 
 DIRECTORY STRUCTURE
 -------------------
