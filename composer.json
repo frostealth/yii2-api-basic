@@ -3,8 +3,15 @@
     "description": "Yii 2 Basic API Template",
     "keywords": ["yii2", "framework", "basic", "project template", "api"],
     "type": "project",
-    "license": "BSD-3-Clause",
+    "license": "MIT",
     "minimum-stability": "dev",
+    "authors": [
+        {
+            "name": "Ivan Kudinov",
+            "email": "i.kudinov@frostealth.ru",
+            "homepage": "http://frostealth.ru"
+        }
+    ],
     "require": {
         "php": ">=5.4.0",
         "yiisoft/yii2": ">=2.0.6",
