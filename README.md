@@ -21,7 +21,7 @@ composer create-project --prefer-dist frostealth/yii2-api-basic my-api
 
 ## Preparing application
 
-After you install the application, you have to copy the `.env.example` file to `.env` and fill-in their own values.
+After you install the application, you have to copy the `.env.example` file to `.env` and fill-in your own values.
 
 DIRECTORY STRUCTURE
 -------------------
