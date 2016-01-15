@@ -1,18 +1,7 @@
 <?php
 
-$params = array_merge(
-    require(__DIR__ . '/params.php'),
-    require(__DIR__ . '/params-local.php')
-);
-
-$db = yii\helpers\ArrayHelper::merge(
-    require(__DIR__ . '/db.php'),
-    require(__DIR__ . '/db-local.php')
-);
-
 return [
     'id' => 'api',
-    'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
     'modules' => [
         'v1' => [
@@ -34,7 +23,7 @@ return [
             'loginUrl' => null,
         ],
         'log' => [
-            'traceLevel' => YII_DEBUG ? 3 : 0,
+            'traceLevel' => env('LOG_TRACE_LEVEL', 0),
             'targets' => [
                 [
                     'class' => 'yii\log\FileTarget',
@@ -42,7 +31,6 @@ return [
                 ],
             ],
         ],
-        'db' => $db,
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
@@ -50,5 +38,4 @@ return [
             'rules' => require('routes.php'),
         ],
     ],
-    'params' => $params,
 ];
