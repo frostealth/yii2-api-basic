@@ -1,6 +1,6 @@
 <?php
 
-use bootstrap\helpers\Dotenv;
+use bootstrap\helpers\DotenvInstance;
 use yii\helpers\ArrayHelper;
 
 if (!function_exists('dotenv')) {
@@ -9,7 +9,7 @@ if (!function_exists('dotenv')) {
      */
     function dotenv()
     {
-        return Dotenv::instance();
+        return DotenvInstance::get();
     }
 }
 
@@ -22,9 +22,9 @@ if (!function_exists('param')) {
      */
     function param($key, $default = null)
     {
-        $params = Yii::$app->params;
+        $value = ArrayHelper::getValue(Yii::$app->params, $key, $default);
 
-        return ArrayHelper::keyExists($key, $params) ? ArrayHelper::getValue($params, $key) : $default;
+        return value($value);
     }
 }
 
@@ -39,7 +39,7 @@ if (!function_exists('env')) {
     {
         $value = getenv($key);
         if ($value === false) {
-            return $default;
+            return value($default);
         }
 
         static $map = [
@@ -50,11 +50,22 @@ if (!function_exists('env')) {
         ];
 
         $key = strtolower($value);
-        $key = ltrim($key, '(');
-        $key = rtrim($key, ')');
+        $key = trim($key, '()');
 
         $value = isset($map[$key]) ? $map[$key] : $value;
 
         return $value;
+    }
+}
+
+if (!function_exists('value')) {
+    /**
+     * @param mixed $value
+     *
+     * @return mixed
+     */
+    function value($value)
+    {
+        return is_callable($value) ? call_user_func($value) : $value;
     }
 }

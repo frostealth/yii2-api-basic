@@ -50,11 +50,11 @@ class Controller extends \yii\rest\Controller
     protected function verbs()
     {
         return [
-            'create' => ['POST'],
-            'update' => ['PUT', 'PATCH'],
-            'delete' => ['DELETE'],
-            'index' => ['GET', 'HEAD'],
-            'view' => ['GET', 'HEAD'],
+            'create' => ['post'],
+            'update' => ['put', 'patch'],
+            'delete' => ['delete'],
+            'index' => ['get', 'head'],
+            'view' => ['get', 'head'],
         ];
     }
 

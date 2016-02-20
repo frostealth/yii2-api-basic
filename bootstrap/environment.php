@@ -1,5 +1,6 @@
 <?php
 
-use bootstrap\helpers\Dotenv;
+use bootstrap\helpers\DotenvInstance as Instance;
+use Dotenv\Dotenv;
 
-(new Dotenv(dirname(__DIR__)))->load();
+Instance::set(new Dotenv(dirname(__DIR__)))->load();
